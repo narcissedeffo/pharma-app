@@ -1,0 +1,108 @@
+
+
+        
+        <div x-data="{ showCreateModal: false }">
+    <div class="animate-fade-in-up">
+        <div class="page-header mb-6 flex justify-between items-end">
+            <div>
+                <h1>Commandes Fournisseur</h1>
+                <p style="color: #64748b; font-size: 0.875rem; margin-top: 0.25rem;">
+                    Gérez vos réassorts et commandes de médicaments manquants.
+                </p>
+            </div>
+            <button @click="showCreateModal = true" class="btn btn-primary">
+                + Nouvelle Commande
+            </button>
+        </div>
+
+        
+        <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <nav class="-mb-px flex space-x-6 overflow-x-auto border-b border-slate-200" aria-label="Tabs" style="flex: 1;">
+                <a href="http://localhost/pharmacien/commandes?status=all" 
+                   class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors border-teal-500 text-teal-600">
+                    Toutes
+                </a>
+                                    <a href="http://localhost/pharmacien/commandes?status=brouillon" 
+                       class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors flex items-center gap-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300">
+                        Brouillon
+                                            </a>
+                                    <a href="http://localhost/pharmacien/commandes?status=envoyee" 
+                       class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors flex items-center gap-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300">
+                        Envoyee
+                                            </a>
+                                    <a href="http://localhost/pharmacien/commandes?status=en_preparation" 
+                       class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors flex items-center gap-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300">
+                        En preparation
+                                            </a>
+                                    <a href="http://localhost/pharmacien/commandes?status=expediee" 
+                       class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors flex items-center gap-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300">
+                        Expediee
+                                            </a>
+                                    <a href="http://localhost/pharmacien/commandes?status=livree" 
+                       class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors flex items-center gap-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300">
+                        Livree
+                                            </a>
+                            </nav>
+        </div>
+
+        <div class="card overflow-hidden">
+            <div class="table-wrap">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="py-3 px-4 bg-slate-50 font-semibold text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">Référence</th>
+                            <th class="py-3 px-4 bg-slate-50 font-semibold text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">Fournisseur</th>
+                            <th class="py-3 px-4 bg-slate-50 font-semibold text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">Date d'envoi</th>
+                            <th class="py-3 px-4 bg-slate-50 font-semibold text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">Statut</th>
+                            <th class="py-3 px-4 bg-slate-50 font-semibold text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                                                    <tr>
+                                <td colspan="5" class="py-8 text-center text-slate-500">Aucune commande trouvée.</td>
+                            </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+        
+            </div>
+
+    
+    <div x-show="showCreateModal" style="display: none;" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div x-show="showCreateModal" x-transition.opacity class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div x-show="showCreateModal" x-transition.scale.origin.bottom class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <form method="POST" action="http://localhost/pharmacien/commandes">
+                    <input type="hidden" name="_token" value="j8N85FTl6BDO1C5m2mYl8WooWsYQWjfrrJQDiOjT" autocomplete="off">                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4" id="modal-title">Créer une nouvelle commande</h3>
+                        
+                        
+                        <div class="mb-4">
+                            <label class="form-label block mb-1">Fournisseur</label>
+                            <select name="fournisseur_id" class="input w-full" required>
+                                <option value="">-- Sélectionner un fournisseur --</option>
+                                                                    <option value="3" >Fournisseur Test</option>
+                                                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label block mb-1">Notes internes (optionnel)</label>
+                            <textarea name="notes" class="input w-full" rows="3" placeholder="Informations complémentaires..."></textarea>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-teal-600 text-base font-medium text-white hover:bg-teal-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
+                            Créer le brouillon
+                        </button>
+                        <button type="button" @click="showCreateModal = false" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                            Annuler
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    

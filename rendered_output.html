@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr" x-data="{ mobileMenuOpen: false }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f766e">
+    <meta name="description" content="Pharma App — Gestion des ordonnances en ligne">
+    <meta name="csrf-token" content="j8N85FTl6BDO1C5m2mYl8WooWsYQWjfrrJQDiOjT">
+    <title>Mes Commandes Fournisseur — PharmaApp</title>
+
+    <link rel="manifest" href="http://localhost/manifest.json">
+    <link rel="icon" href="http://localhost/favicon.ico">
+
+    <link rel="preload" as="style" href="http://localhost/build/assets/app-BRAk6V82.css" /><link rel="modulepreload" as="script" href="http://localhost/build/assets/app-tUMsq8Mz.js" /><link rel="stylesheet" href="http://localhost/build/assets/app-BRAk6V82.css" /><script type="module" src="http://localhost/build/assets/app-tUMsq8Mz.js"></script>    </head>
+<body class="min-h-screen" style="background: linear-gradient(135deg, #f0fdfa 0%, #f8fafc 50%, #f0f9ff 100%); min-height: 100vh;">
+
+    <!-- ═══════════════════ NAVBAR ═══════════════════ -->
+    <header style="background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%); box-shadow: 0 2px 20px rgba(15,118,110,0.4);">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
+
+            <!-- Logo -->
+            <a href="http://localhost/dashboard" class="flex items-center gap-2.5 text-white no-underline">
+                <div style="background: rgba(255,255,255,0.2); border-radius: 10px; padding: 6px; backdrop-filter: blur(8px);">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                    </svg>
+                </div>
+                <span style="font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em;">PharmaApp</span>
+            </a>
+
+            <!-- Desktop nav -->
+            <div class="hidden items-center gap-4 md:flex">
+                                    
+                    
+                    
+                                            <a href="http://localhost/pharmacien/ordonnances"
+                           class="flex items-center gap-1.5 text-sm text-teal-100 hover:text-white transition-colors"
+                           style="text-decoration:none;">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                            </svg>
+                            Ordonnances
+                        </a>
+                        <a href="http://localhost/pharmacien/commandes"
+                           class="flex items-center gap-1.5 text-sm text-teal-100 hover:text-white transition-colors"
+                           style="text-decoration:none;">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                            Commandes Fournisseur
+                        </a>
+                    
+                    
+                    
+                    <!-- Séparateur -->
+                    <div style="width: 1px; height: 24px; background: rgba(255,255,255,0.25);"></div>
+
+                    <!-- Notifications Dropdown -->
+                    <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" @click.away="open = false" class="relative flex items-center justify-center text-teal-100 hover:text-white transition-colors" style="width: 34px; height: 34px;">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                            </svg>
+                                                            <span class="absolute top-1 right-1 flex h-2.5 w-2.5">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500 border border-teal-800"></span>
+                                </span>
+                                                    </button>
+
+                        <div x-show="open" x-cloak x-transition
+                             class="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg overflow-hidden z-50 border border-slate-200"
+                             style="display: none;">
+                            <div class="px-4 py-3 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                                <span class="font-semibold text-slate-800 text-sm">Notifications</span>
+                                                                    <form method="POST" action="http://localhost/notifications/mark-all-read" class="m-0">
+                                        <input type="hidden" name="_token" value="j8N85FTl6BDO1C5m2mYl8WooWsYQWjfrrJQDiOjT" autocomplete="off">                                        <button type="submit" class="text-xs text-teal-600 hover:text-teal-800 font-medium">Tout marquer comme lu</button>
+                                    </form>
+                                                            </div>
+                            
+                            <div class="max-h-96 overflow-y-auto">
+                                                                    <a href="http://localhost/notifications/78800cb9-a858-4959-9196-d57fae83acf6/read" class="block px-4 py-3 hover:bg-slate-50 border-b border-slate-100 transition-colors">
+                                        <p class="text-sm text-slate-800 mb-1">Nouvelle ordonnance reçue de julie.</p>
+                                        <span class="text-xs text-slate-500">26 minutes ago</span>
+                                    </a>
+                                                                
+                                                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profil -->
+                    <div class="flex items-center gap-2.5">
+                        <div style="width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 700; color: #fff; border: 1.5px solid rgba(255,255,255,0.35);">
+                            P
+                        </div>
+                        <div>
+                            <p style="font-size: 0.8125rem; font-weight: 600; color: #fff; line-height: 1.2;">Pharmacien Test</p>
+                            <p style="font-size: 0.7rem; color: rgba(255,255,255,0.65); line-height: 1;">Pharmacien</p>
+                        </div>
+                    </div>
+
+                    <form method="POST" action="http://localhost/logout" style="margin: 0;">
+                        <input type="hidden" name="_token" value="j8N85FTl6BDO1C5m2mYl8WooWsYQWjfrrJQDiOjT" autocomplete="off">                        <button type="submit" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; border-radius: 8px; padding: 6px 14px; font-size: 0.8125rem; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.375rem;"
+                                onmouseover="this.style.background='rgba(255,255,255,0.25)'"
+                                onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                            </svg>
+                            Déconnexion
+                        </button>
+                    </form>
+                            </div>
+
+            <!-- Burger (mobile) -->
+            <button class="md:hidden text-white" @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Menu">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    <path x-show="mobileMenuOpen"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div x-show="mobileMenuOpen" x-cloak x-transition class="border-t border-teal-600 px-4 py-3 space-y-2 md:hidden"
+             style="background: rgba(7,89,81,0.95); backdrop-filter: blur(8px);">
+                                                                                <a href="http://localhost/pharmacien/ordonnances" class="block py-2 text-teal-100 hover:text-white text-sm" style="text-decoration:none;">📋 Ordonnances</a>
+                    <a href="http://localhost/pharmacien/commandes" class="block py-2 text-teal-100 hover:text-white text-sm" style="text-decoration:none;">📦 Commandes</a>
+                                                                <div style="height: 1px; background: rgba(255,255,255,0.15); margin: 0.5rem 0;"></div>
+                <p class="text-xs text-teal-200">Pharmacien Test · Pharmacien</p>
+                <form method="POST" action="http://localhost/logout">
+                    <input type="hidden" name="_token" value="j8N85FTl6BDO1C5m2mYl8WooWsYQWjfrrJQDiOjT" autocomplete="off">                    <button type="submit" class="w-full text-left py-2 text-sm text-teal-100 hover:text-white">🚪 Déconnexion</button>
+                </form>
+                    </div>
+    </header>
+
+    <!-- ═══════════════════ MAIN ═══════════════════ -->
+    <main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+
+        
+        <div x-data="{ showCreateModal: false }">
+    <div class="animate-fade-in-up">
+        <div class="page-header mb-6 flex justify-between items-end">
+            <div>
+                <h1>Commandes Fournisseur</h1>
+                <p style="color: #64748b; font-size: 0.875rem; margin-top: 0.25rem;">
+                    Gérez vos réassorts et commandes de médicaments manquants.
+                </p>
+            </div>
+            <button @click="showCreateModal = true" class="btn btn-primary">
+                + Nouvelle Commande
+            </button>
+        </div>
+
+        
+        <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <nav class="-mb-px flex space-x-6 overflow-x-auto border-b border-slate-200" aria-label="Tabs" style="flex: 1;">
+                <a href="http://localhost/pharmacien/commandes?status=all" 
+                   class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors border-teal-500 text-teal-600">
+                    Toutes
+                </a>
+                                    <a href="http://localhost/pharmacien/commandes?status=brouillon" 
+                       class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors flex items-center gap-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300">
+                        Brouillon
+                                            </a>
+                                    <a href="http://localhost/pharmacien/commandes?status=envoyee" 
+                       class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors flex items-center gap-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300">
+                        Envoyee
+                                            </a>
+                                    <a href="http://localhost/pharmacien/commandes?status=en_preparation" 
+                       class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors flex items-center gap-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300">
+                        En preparation
+                                            </a>
+                                    <a href="http://localhost/pharmacien/commandes?status=expediee" 
+                       class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors flex items-center gap-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300">
+                        Expediee
+                                            </a>
+                                    <a href="http://localhost/pharmacien/commandes?status=livree" 
+                       class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm transition-colors flex items-center gap-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300">
+                        Livree
+                                            </a>
+                            </nav>
+        </div>
+
+        <div class="card overflow-hidden">
+            <div class="table-wrap">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="py-3 px-4 bg-slate-50 font-semibold text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">Référence</th>
+                            <th class="py-3 px-4 bg-slate-50 font-semibold text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">Fournisseur</th>
+                            <th class="py-3 px-4 bg-slate-50 font-semibold text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">Date d'envoi</th>
+                            <th class="py-3 px-4 bg-slate-50 font-semibold text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">Statut</th>
+                            <th class="py-3 px-4 bg-slate-50 font-semibold text-xs text-slate-500 uppercase tracking-wider border-b border-slate-200">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                                                    <tr>
+                                <td colspan="5" class="py-8 text-center text-slate-500">Aucune commande trouvée.</td>
+                            </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+        
+            </div>
+
+    
+    <div x-show="showCreateModal" style="display: none;" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div x-show="showCreateModal" x-transition.opacity class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div x-show="showCreateModal" x-transition.scale.origin.bottom class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <form method="POST" action="http://localhost/pharmacien/commandes">
+                    <input type="hidden" name="_token" value="j8N85FTl6BDO1C5m2mYl8WooWsYQWjfrrJQDiOjT" autocomplete="off">                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4" id="modal-title">Créer une nouvelle commande</h3>
+                        
+                        
+                        <div class="mb-4">
+                            <label class="form-label block mb-1">Fournisseur</label>
+                            <select name="fournisseur_id" class="input w-full" required>
+                                <option value="">-- Sélectionner un fournisseur --</option>
+                                                                    <option value="3" >Fournisseur Test</option>
+                                                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label block mb-1">Notes internes (optionnel)</label>
+                            <textarea name="notes" class="input w-full" rows="3" placeholder="Informations complémentaires..."></textarea>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-teal-600 text-base font-medium text-white hover:bg-teal-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
+                            Créer le brouillon
+                        </button>
+                        <button type="button" @click="showCreateModal = false" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                            Annuler
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <!-- Footer minimal -->
+    <footer style="text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.75rem; margin-top: 4rem;">
+        © 2026 PharmaApp — Tous droits réservés
+    </footer>
+
+    </body>
+</html>
